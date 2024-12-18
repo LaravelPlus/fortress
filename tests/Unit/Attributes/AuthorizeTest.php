@@ -9,13 +9,14 @@ use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
 use Tests\Unit\Attributes\TestClasses\TestClassWithAuthorize;
 
-class AuthorizeTest extends TestCase
+final class AuthorizeTest extends TestCase
 {
     private function getAttributeInstance(string $methodName): Authorize
     {
         $reflectionMethod = new ReflectionMethod(TestClassWithAuthorize::class, $methodName);
         $attributes = $reflectionMethod->getAttributes(Authorize::class);
         $this->assertCount(1, $attributes, "The method '{$methodName}' should have exactly one Authorize attribute.");
+
         return $attributes[0]->newInstance();
     }
 

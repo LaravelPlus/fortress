@@ -73,7 +73,6 @@ final class FortressTest extends TestCase
         );
     }
 
-
     public function test_authorization_success(): void
     {
         $user = Mockery::mock();
@@ -95,5 +94,4 @@ final class FortressTest extends TestCase
 
         $this->assertTrue($result);
     }
-
 }
