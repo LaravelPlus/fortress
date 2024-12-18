@@ -1,15 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Laravelplus\Fortress;
 
 use Illuminate\Support\ServiceProvider;
 
-class FortressServiceProvider extends ServiceProvider
+final class FortressServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         /*
          * Optional methods to load your package assets
@@ -40,21 +42,23 @@ class FortressServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+            // Register the installation command
+            $this->commands([
+                InstallFortressCommand::class,
+            ]);
         }
+
     }
 
     /**
      * Register the application services.
      */
-    public function register()
+    public function register(): void
     {
         // Automatically apply the package configuration
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'fortress');
 
         // Register the main class to use with the facade
-        $this->app->singleton('fortress', function () {
-            return new Fortress;
-        });
+        $this->app->singleton('fortress', fn () => new Fortress());
     }
 }
