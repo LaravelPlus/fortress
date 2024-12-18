@@ -20,12 +20,12 @@
     "spatie/laravel-permission": "^6.10.1"
   },
   "require-dev": {
+    "orchestra/testbench": "^v9.6.1",
     "fakerphp/faker": "^1.23",
     "laravel/pail": "^1.1",
     "laravel/pint": "^1.18.3",
     "mockery/mockery": "^1.6",
     "nunomaduro/collision": "^v8.5.0",
-    "orchestra/testbench": "^9.8",
     "phpunit/phpunit": "^11.1.1"
   },
   "autoload": {
