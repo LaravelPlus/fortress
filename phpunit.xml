@@ -20,7 +20,7 @@
 
     <logging>
         <log type="coverage-html" target="./coverage-report" />
-        <log type="testdox-html" target="./testdox.html" />
+        <log type="testdox-html" target="./test.html" />
     </logging>
 
     <php>
