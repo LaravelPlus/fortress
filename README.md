@@ -1,4 +1,4 @@
-# Laravel Fortress
+# LaravelPlus Fortress
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravelplus/fortress.svg?style=flat-square)](https://packagist.org/packages/laravelplus/fortress)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravelplus/fortress.svg?style=flat-square)](https://packagist.org/packages/laravelplus/fortress)
