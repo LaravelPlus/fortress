@@ -28,6 +28,15 @@ composer require laravelplus/fortress
 
 ### Configuration
 
+
+Append Middleware where you need it:
+```
+$middleware->web(append: [
+    ...
+    Laravelplus\Fortress\Middleware\AttributeAuthorizationMiddleware::class,
+]);
+```
+
 To publish the configuration file, run:
 
 ```bash
