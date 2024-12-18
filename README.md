@@ -1,7 +1,7 @@
 # Laravel Fortress
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravelplus/fortress.svg?style=flat-square)](https://packagist.org/packages/laravelplus/fortress)  
-[![Total Downloads](https://img.shields.io/packagist/dt/laravelplus/fortress.svg?style=flat-square)](https://packagist.org/packages/laravelplus/fortress)  
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravelplus/fortress.svg?style=flat-square)](https://packagist.org/packages/laravelplus/fortress)
+[![Total Downloads](https://img.shields.io/packagist/dt/laravelplus/fortress.svg?style=flat-square)](https://packagist.org/packages/laravelplus/fortress)
 ![GitHub Actions](https://github.com/laravelplus/fortress/actions/workflows/main.yml/badge.svg)
 
 **Fortress** is a powerful Laravel package designed to streamline attribute-based authorization. By leveraging the `#[Authorize]` attribute, it provides a declarative and clean approach to securing your Laravel application. Whether managing roles, permissions, gates, or ownership rules, Fortress ensures security is flexible, robust, and easy to implement.
