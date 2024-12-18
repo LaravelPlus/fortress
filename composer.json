@@ -1,54 +1,61 @@
 {
-    "name": "laravelplus/fortress",
-    "description": "Fortress is a powerful Laravel package designed to streamline and enhance attribute-based authorization through middleware. It acts as the ultimate security gatekeeper for your application, ensuring that only the right users with the correct attributes gain access to specific resources.",
-    "keywords": [
-        "laravelplus",
-        "fortress"
-    ],
-    "homepage": "https://github.com/laravelplus/fortress",
-    "license": "MIT",
-    "type": "library",
-    "authors": [
-        {
-            "name": "Nejcc",
-            "email": "info@after.si",
-            "role": "Developer"
-        }
-    ],
-    "require": {
-        "php": "^7.4|^8.0",
-        "illuminate/support": "^8.0"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^9.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Laravelplus\\Fortress\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Laravelplus\\Fortress\\Tests\\": "tests"
-        }
-    },
-    "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Laravelplus\\Fortress\\FortressServiceProvider"
-            ],
-            "aliases": {
-                "Fortress": "Laravelplus\\Fortress\\FortressFacade"
-            }
-        }
+  "name": "laravelplus/fortress",
+  "description": "Fortress is a powerful Laravel package designed to streamline and enhance attribute-based authorization through middleware. It acts as the ultimate security gatekeeper for your application, ensuring that only the right users with the correct attributes gain access to specific resources.",
+  "keywords": [
+    "laravelplus",
+    "fortress"
+  ],
+  "homepage": "https://github.com/laravelplus/fortress",
+  "license": "MIT",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Nejcc",
+      "email": "info@after.si",
+      "role": "Developer"
     }
+  ],
+  "require": {
+    "php": "^8.2",
+    "illuminate/support": "*",
+    "nunomaduro/collision": "^5.11",
+    "spatie/laravel-permission": "^6.10.1"
+  },
+  "require-dev": {
+    "laravel/pint": "^1.18.3",
+    "mockery/mockery": "^1.6.12",
+    "pestphp/pest": "^1.23.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Laravelplus\\Fortress\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Laravelplus\\Fortress\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "./vendor/bin/pest"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Laravelplus\\Fortress\\FortressServiceProvider"
+      ],
+      "aliases": {
+        "Fortress": "Laravelplus\\Fortress\\FortressFacade"
+      },
+      "laravel": {
+        "versions": "10.x"
+      }
+    }
+  }
 }
