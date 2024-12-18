@@ -17,14 +17,16 @@
   ],
   "require": {
     "php": "^8.2",
-    "illuminate/support": "*",
-    "nunomaduro/collision": "^5.11",
     "spatie/laravel-permission": "^6.10.1"
   },
   "require-dev": {
+    "fakerphp/faker": "^1.23",
+    "laravel/pail": "^1.1",
     "laravel/pint": "^1.18.3",
-    "mockery/mockery": "^1.6.12",
-    "pestphp/pest": "^1.23.1"
+    "mockery/mockery": "^1.6",
+    "nunomaduro/collision": "^v8.5.0",
+    "orchestra/testbench": "^9.8",
+    "phpunit/phpunit": "^11.1.1"
   },
   "autoload": {
     "psr-4": {
@@ -33,11 +35,11 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Laravelplus\\Fortress\\Tests\\": "tests"
+      "Tests\\": "tests/"
     }
   },
   "scripts": {
-    "test": "./vendor/bin/pest"
+    "test": "./vendor/bin/phpunit"
   },
   "config": {
     "sort-packages": true,
