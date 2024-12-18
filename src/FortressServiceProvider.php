@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Laravelplus\Fortress;
 
 use Illuminate\Support\ServiceProvider;
+use Laravelplus\Fortress\Commands\InstallFortressCommand;
 
 final class FortressServiceProvider extends ServiceProvider
 {
