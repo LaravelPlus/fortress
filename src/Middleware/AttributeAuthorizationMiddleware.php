@@ -23,6 +23,11 @@ final class AttributeAuthorizationMiddleware
     {
         $route = $request->route();
         $controller = $route->getController();
+
+        if ($controller === null) {
+            return $next($request);
+        }
+
         $method = $route->getActionMethod();
 
         $authorizeAttribute = $this->getAuthorizeAttribute($controller, $method);
