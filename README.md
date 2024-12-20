@@ -66,7 +66,7 @@ class PostController
         public: false,
         roles: ['admin', 'editor'],
         permissions: ['create', 'update'],
-        owner: 'App\\Models\\Post',
+        owner: App\Models\Post::class,
         overrideKey: 'author_id'
     )]
     public function update(Request $request, $id)
@@ -113,7 +113,7 @@ public function approveLeave(Request $request)
 Restrict access to resources owned by the authenticated user:
 
 ```php
-#[Authorize(owner: 'App\\Models\\Comment', overrideKey: 'user_id')]
+#[Authorize(owner: App\Models\Comment::class, overrideKey: 'user_id')]
 public function editComment(Request $request, $id)
 {
     // Accessible only if the comment belongs to the authenticated user
