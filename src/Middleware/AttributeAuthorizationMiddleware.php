@@ -7,6 +7,7 @@ namespace Laravelplus\Fortress\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Pipeline;
 use Illuminate\Support\Str;
 use Laravelplus\Fortress\Attributes\Authorize;
 use ReflectionException;
@@ -56,21 +57,13 @@ final class AttributeAuthorizationMiddleware
             return;
         }
 
-        if (!$this->passesGateCheck($attribute)) {
-            abort(403, __('authorization.unauthorized_action'));
-        }
+        abort_unless($this->passesGateCheck($attribute), 403, __('authorization.unauthorized_action'));
 
-        if (!$this->passesRoleCheck($attribute)) {
-            abort(403, __('authorization.unauthorized_action'));
-        }
+        abort_unless($this->passesRoleCheck($attribute), 403, __('authorization.unauthorized_action'));
 
-        if (!$this->passesPermissionCheck($attribute)) {
-            abort(403, __('authorization.unauthorized_action'));
-        }
+        abort_unless($this->passesPermissionCheck($attribute), 403, __('authorization.unauthorized_action'));
 
-        if (!$this->passesOwnershipCheck($attribute, $request)) {
-            abort(403, __('authorization.not_owner'));
-        }
+        abort_unless($this->passesOwnershipCheck($attribute, $request), 403, __('authorization.not_owner'));
     }
 
     /**
