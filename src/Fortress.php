@@ -25,7 +25,7 @@ final class Fortress
         abort_if(!empty($roles) && !$user->hasAnyRole($roles), 403, 'Unauthorized role.');
 
         // Permissions check
-        abort_if(!$permissions && !$user->hasPermissionTo($permissions), 403, 'Unauthorized permission.');
+        abort_if($permissions && !$user->hasPermissionTo($permissions), 403, 'Unauthorized permission.');
 
         // Ownership check
         if (!$owner) {
