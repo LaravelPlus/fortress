@@ -7,7 +7,6 @@ namespace Laravelplus\Fortress\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Pipeline;
 use Illuminate\Support\Str;
 use Laravelplus\Fortress\Attributes\Authorize;
 use ReflectionException;
