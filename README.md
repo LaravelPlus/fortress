@@ -1,5 +1,9 @@
 # LaravelPlus Fortress
 
+<p align="center">
+  <img src="icon.png" width="200" alt="accessibility text">
+</p>
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravelplus/fortress.svg?style=flat-square)](https://packagist.org/packages/laravelplus/fortress)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravelplus/fortress.svg?style=flat-square)](https://packagist.org/packages/laravelplus/fortress)
 ![GitHub Actions](https://github.com/laravelplus/fortress/actions/workflows/main.yml/badge.svg)
