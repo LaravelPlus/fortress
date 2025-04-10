@@ -4,8 +4,14 @@ declare(strict_types=1);
 
 namespace Laravelplus\Fortress;
 
+use Illuminate\Cache\Repository as Cache;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Contracts\Config\Repository as Config;
 use Illuminate\Support\ServiceProvider;
 use Laravelplus\Fortress\Commands\InstallFortressCommand;
+use Laravelplus\Fortress\Contracts\PermissionAdapter;
+use Laravelplus\Fortress\Contracts\RoleAdapter;
+use Laravelplus\Fortress\Adapters\DefaultAdapter;
 
 final class FortressServiceProvider extends ServiceProvider
 {
@@ -25,7 +31,7 @@ final class FortressServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/config.php' => config_path('fortress.php'),
-            ], 'config');
+            ], 'fortress-config');
 
             // Publishing the views.
             /*$this->publishes([
@@ -56,10 +62,24 @@ final class FortressServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'fortress');
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/config.php',
+            'fortress'
+        );
 
-        // Register the main class to use with the facade
-        $this->app->singleton('fortress', fn () => new Fortress());
+        $this->app->singleton(Fortress::class, function ($app) {
+            return new Fortress(
+                $app->make('config'),
+                $app->make('cache.store')
+            );
+        });
+
+        $this->app->singleton(PermissionAdapter::class, function () {
+            return new DefaultAdapter();
+        });
+
+        $this->app->singleton(RoleAdapter::class, function () {
+            return new DefaultAdapter();
+        });
     }
 }
