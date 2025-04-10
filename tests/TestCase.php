@@ -4,34 +4,39 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Orchestra\Testbench\TestCase as BaseTestCase;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Config;
+use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends OrchestraTestCase
 {
-    /**
-     * Get package providers for testbench.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return array
-     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Load test configuration
+        Config::set('permission', require __DIR__ . '/config/permission.php');
+
+        // Run migrations
+        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+    }
+
     protected function getPackageProviders($app)
     {
         return [
-            // Register your package's service providers here
+            \Spatie\Permission\PermissionServiceProvider::class,
             \Laravelplus\Fortress\FortressServiceProvider::class,
         ];
     }
 
-    /**
-     * Get package aliases for testbench.
-     *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return array
-     */
-    protected function getPackageAliases($app)
+    protected function getEnvironmentSetUp($app)
     {
-        return [
-            // Register any aliases required for your package
-        ];
+        // Setup default database to use sqlite :memory:
+        $app['config']->set('database.default', 'testbench');
+        $app['config']->set('database.connections.testbench', [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ]);
     }
 }
